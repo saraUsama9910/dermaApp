@@ -183,7 +183,7 @@ class LoginViewBody extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                               ResuableText(
+                              const ResuableText(
                                 text: 'Don\'t have an account?',
                                 color: AppColors.kGreyColor,
                               ),

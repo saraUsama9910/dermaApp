@@ -30,12 +30,12 @@ import 'package:graduation/features/profile/cubit/faq_screen_cubit/faq_screen_cu
 import 'package:graduation/features/profile/cubit/update_password_cubit/update_password__cubit.dart';
 import 'package:graduation/features/profile/cubit/update_profile_cubit/update_profile_cubit.dart';
 import 'package:graduation/features/profile/data/repos/profile_repo_implementation.dart';
-import 'package:graduation/features/profile/presentation/screens/screen_modes.dart';
+import 'package:graduation/features/profile/presentation/screens/change_password_screen.dart';
 import 'package:graduation/features/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:graduation/features/profile/presentation/screens/faq_screen.dart';
 import 'package:graduation/features/profile/presentation/screens/language_screen.dart';
 import 'package:graduation/features/profile/presentation/screens/main_profile_screen.dart';
-import 'package:graduation/features/profile/presentation/screens/change_password_screen.dart';
+import 'package:graduation/features/profile/presentation/screens/screen_modes.dart';
 import 'package:graduation/features/profile/presentation/screens/settings_screen.dart';
 import 'package:graduation/features/splash/peresntation/views/splash_view.dart';
 import 'package:graduation/features/welcome/peresntation/views/welcome_view.dart';
@@ -51,43 +51,49 @@ class AppRouter {
         );
       case Routes.screenModes:
         return MaterialPageRoute(
-          builder: (context) =>  ScreenModes(),
+          builder: (context) => const ScreenModes(),
         );
       case Routes.settingsScreen:
         return MaterialPageRoute(
-          builder: (context) =>  BlocProvider(
-  create: (context) => DeleteUserCubit(profileRepoImplementation: ProfileRepoImplementation(apiConsumer: DioConsumer(dio: Dio()))),
-  child: SettingsScreen(),
-),
+          builder: (context) => BlocProvider(
+            create: (context) => DeleteUserCubit(
+                profileRepoImplementation: ProfileRepoImplementation(
+                    apiConsumer: DioConsumer(dio: Dio()))),
+            child: const SettingsScreen(),
+          ),
         );
       case Routes.changePasswordScreen:
         return MaterialPageRoute(
-          builder: (context) =>  BlocProvider(
-  create: (context) => UpdatePasswordCubit(profileRepoImplementation: ProfileRepoImplementation(apiConsumer: DioConsumer(dio: Dio()))),
-  child: ChangePasswordScreen(),
-),
+          builder: (context) => BlocProvider(
+            create: (context) => UpdatePasswordCubit(
+                profileRepoImplementation: ProfileRepoImplementation(
+                    apiConsumer: DioConsumer(dio: Dio()))),
+            child: const ChangePasswordScreen(),
+          ),
         );
       case Routes.faqScreen:
         return MaterialPageRoute(
-          builder: (context) =>  BlocProvider(
-  create: (context) => FaqScreenCubit(),
-  child: FaqScreen(),
-),
+          builder: (context) => BlocProvider(
+            create: (context) => FaqScreenCubit(),
+            child: const FaqScreen(),
+          ),
         );
       case Routes.languageScreen:
         return MaterialPageRoute(
-          builder: (context) =>  LanguageScreen(),
+          builder: (context) => const LanguageScreen(),
         );
       case Routes.editProfileScreen:
         return MaterialPageRoute(
-          builder: (context) =>  BlocProvider(
-  create: (context) => UpdateProfileCubit(profileRepoImplementation: ProfileRepoImplementation(apiConsumer: DioConsumer(dio: Dio()))),
-  child: EditProfileScreen(),
-),
+          builder: (context) => BlocProvider(
+            create: (context) => UpdateProfileCubit(
+                profileRepoImplementation: ProfileRepoImplementation(
+                    apiConsumer: DioConsumer(dio: Dio()))),
+            child: const EditProfileScreen(),
+          ),
         );
       case Routes.mainProfileScreen:
         return MaterialPageRoute(
-          builder: (context) =>  MainProfileScreen(),
+          builder: (context) => const MainProfileScreen(),
         );
       case Routes.forgotPassScreen:
         return MaterialPageRoute(
@@ -109,7 +115,7 @@ class AppRouter {
             settings: routeSettings);
       case Routes.addCommentScreen:
         return MaterialPageRoute(
-            builder: (context) =>  AddCommentScreen(),
+            builder: (context) => const AddCommentScreen(),
             settings: routeSettings);
       case Routes.postDetailsScreen:
         return MaterialPageRoute(
@@ -121,20 +127,21 @@ class AppRouter {
             create: (context) => SearchForPostsCubit(
                 communityRepoImplementation: CommunityRepoImplementation(
                     apiConsumer: DioConsumer(dio: Dio()))),
-            child: SearchScreen(),
+            child: const SearchScreen(),
           ),
         );
       case Routes.addPostScreen:
         return MaterialPageRoute(
-          builder: (context) =>  BlocProvider(
-  create: (context) => AddPostCubit(communityRepoImplementation: CommunityRepoImplementation(apiConsumer: DioConsumer(dio: Dio()))),
-  child: AddPostScreen(),
-),
+          builder: (context) => BlocProvider(
+            create: (context) => AddPostCubit(
+                communityRepoImplementation: CommunityRepoImplementation(
+                    apiConsumer: DioConsumer(dio: Dio()))),
+            child: const AddPostScreen(),
+          ),
         );
       case Routes.allPostsScreen:
         return MaterialPageRoute(
-            builder: (context) =>  AllPostsScreen(),
-            settings: routeSettings);
+            builder: (context) => AllPostsScreen(), settings: routeSettings);
       case Routes.kWelcomeView:
         return MaterialPageRoute(
           builder: (context) => const WelcomeView(),
@@ -149,7 +156,7 @@ class AppRouter {
         );
       case Routes.kHomeView:
         return MaterialPageRoute(
-          builder: (context) =>  HomeView(),
+          builder: (context) => const HomeView(),
         );
       case Routes.kSignupView:
         return MaterialPageRoute(

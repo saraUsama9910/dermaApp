@@ -10,7 +10,9 @@ class DefaultAppBar extends StatelessWidget {
       required this.hasLeading,
       required this.hasTitle,
       required this.hasActions,
-      this.startPAddingValue, this.spaceAfterLeading, this.spaceAfterActions});
+      this.startPAddingValue,
+      this.spaceAfterLeading,
+      this.spaceAfterActions});
 
   final bool hasLeading;
   final bool hasTitle;
@@ -26,18 +28,26 @@ class DefaultAppBar extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 50.h,
-      child: Row(
-          children: [
+      child: Row(children: [
         if (hasLeading)
-          Padding(padding: EdgeInsetsDirectional.only(start: (startPAddingValue ?? 15).w),
+          Padding(
+            padding:
+                EdgeInsetsDirectional.only(start: (startPAddingValue ?? 15).w),
             child: leading!,
           ),
-            spaceAfterLeading!=null?SizedBox(width: spaceAfterLeading!,): Spacer(),
+        spaceAfterLeading != null
+            ? SizedBox(
+                width: spaceAfterLeading!,
+              )
+            : const Spacer(),
         if (hasTitle) title!,
         const Spacer(),
         if (hasActions) ...actions!,
-            spaceAfterActions!=null?SizedBox(width: spaceAfterActions!,): SizedBox.shrink(),
-
+        spaceAfterActions != null
+            ? SizedBox(
+                width: spaceAfterActions!,
+              )
+            : const SizedBox.shrink(),
       ]),
     );
   }

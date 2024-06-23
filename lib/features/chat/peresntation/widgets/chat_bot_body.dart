@@ -5,7 +5,6 @@ import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:share_plus/share_plus.dart';
 
 class ChatBotBody extends StatefulWidget {
   const ChatBotBody({super.key});
@@ -102,13 +101,11 @@ class _ChatBotBodyState extends State<ChatBotBody> {
       print(e);
     }
   }
-  
 
   void _sendMediaMessage() async {
     ImagePicker picker = ImagePicker();
     XFile? file = await picker.pickImage(
       source: ImageSource.gallery,
-      
     );
     if (file != null) {
       ChatMessage chatMessage = ChatMessage(

@@ -32,9 +32,9 @@ class CustomUnderlineTextField extends StatelessWidget {
       controller: controller,
       validator: validator,
       decoration: InputDecoration(
-        border: UnderlineInputBorder(),
-          enabledBorder: UnderlineInputBorder(),
-          focusedBorder: UnderlineInputBorder(),
+          border: const UnderlineInputBorder(),
+          enabledBorder: const UnderlineInputBorder(),
+          focusedBorder: const UnderlineInputBorder(),
           suffixIcon: hasSuffixIcon
               ? GestureDetector(
                   onTap: suffixOnTap,
