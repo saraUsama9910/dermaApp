@@ -1,21 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graduation/core/commons/functions.dart';
-import 'package:graduation/core/commons/global_cubits/global_community_cubit/global_community_cubit.dart';
-import 'package:graduation/core/routes/routes.dart';
 import 'package:graduation/core/utils/app_colors.dart';
 import 'package:graduation/core/utils/app_styles.dart';
 import 'package:graduation/core/utils/fontweight_helper.dart';
-import 'package:graduation/core/widgets/default_app_bar.dart';
-import 'package:graduation/core/widgets/resuable_text.dart';
 import 'package:graduation/features/community/cubits/search_for_posts_cubit/search_for_posts_cubit.dart';
 import 'package:graduation/features/community/presentation/widgets/No_posts_widget.dart';
 import 'package:graduation/features/community/presentation/widgets/line_widget.dart';
 import 'package:graduation/features/community/presentation/widgets/search_widget.dart';
-import 'package:shimmer/shimmer.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});

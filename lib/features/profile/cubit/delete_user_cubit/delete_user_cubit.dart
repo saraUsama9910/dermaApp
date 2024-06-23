@@ -7,23 +7,19 @@ import 'package:meta/meta.dart';
 part 'delete_user_state.dart';
 
 class DeleteUserCubit extends Cubit<DeleteUserState> {
-  DeleteUserCubit({required this.profileRepoImplementation}) : super(DeleteUserInitial());
+  DeleteUserCubit({required this.profileRepoImplementation})
+      : super(DeleteUserInitial());
 
   ProfileRepoImplementation profileRepoImplementation;
 
-  deleteAccountFun() async
-  {
+  deleteAccountFun() async {
     emit(DeleteAccountLoadingState());
-    final response=await profileRepoImplementation.deleteUser(
+    final response = await profileRepoImplementation.deleteUser(
         userId: CacheHelper().getData(key: ApiKeys.id),
         token: CacheHelper().getData(key: ApiKeys.token));
 
     response.fold(
-            (error) => emit(DeleteAccountFailureState(errorMessage: error)),
-            (success) => emit(DeleteAccountSuccessState(successMessage: success)));
-
-
+        (error) => emit(DeleteAccountFailureState(errorMessage: error)),
+        (success) => emit(DeleteAccountSuccessState(successMessage: success)));
   }
-
-
 }

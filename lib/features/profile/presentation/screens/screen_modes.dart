@@ -11,13 +11,12 @@ import 'package:graduation/features/profile/presentation/widgets/dark_mode_item_
 import '../../../community/presentation/widgets/line_widget.dart';
 
 class ScreenModes extends StatelessWidget {
-   ScreenModes({super.key});
+  const ScreenModes({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ChangeThemeCubit, ChangeThemeState>(
-      listener: (context, state)
-      {
+      listener: (context, state) {
         // TODO: implement listener
       },
       builder: (context, state) {
@@ -25,19 +24,17 @@ class ScreenModes extends StatelessWidget {
         return Scaffold(
           body: SafeArea(
             child: Column(
-              children:
-              [
-
-                SizedBox(height: 16.h,),
+              children: [
+                SizedBox(
+                  height: 16.h,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children:
-                  [
+                  children: [
                     Padding(
-                      padding:  EdgeInsetsDirectional.only(start: 16.w),
+                      padding: EdgeInsetsDirectional.only(start: 16.w),
                       child: GestureDetector(
-                          onTap: ()
-                          {
+                          onTap: () {
                             Navigator.pop(context);
                           },
                           child: Container(
@@ -48,46 +45,50 @@ class ScreenModes extends StatelessWidget {
                                 border: Border.all(
                                   color: AppColors.cF1F1F0,
                                   width: 1.4.w,
-                                )
-                            ),
+                                )),
                             child: Padding(
                               padding: const EdgeInsets.all(6.0),
-                              child: SvgPicture.asset(ImageConstants.arrowBackProfileIcon,
-                                color: AppColors.black,width: 6.w,height: 12.h,
-
-                                fit: BoxFit.contain,),
+                              child: SvgPicture.asset(
+                                ImageConstants.arrowBackProfileIcon,
+                                color: AppColors.black,
+                                width: 6.w,
+                                height: 12.h,
+                                fit: BoxFit.contain,
+                              ),
                             ),
                           )),
-
                     ),
-                    SizedBox(width: 88.5,),
-                    ResuableText(
+                    const SizedBox(
+                      width: 88.5,
+                    ),
+                    const ResuableText(
                       text: 'Dark Mode',
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                       color: AppColors.c242424,
                     )
-
                   ],
                 ),
-                SizedBox(height: 10.h,),
-                LineWidget(
+                SizedBox(
+                  height: 10.h,
+                ),
+                const LineWidget(
                   height: 1.5,
                   color: AppColors.cEBEBEB,
                 ),
                 Expanded(
                   child: ListView.separated(
-                      padding:  EdgeInsetsDirectional.only(start: 15.w,end: 15.w,top: 10.h),
-                      itemBuilder: (context, index) =>
-                          DarkModeItemWidget(
-                           currentIndex: index,
+                      padding: EdgeInsetsDirectional.only(
+                          start: 15.w, end: 15.w, top: 10.h),
+                      itemBuilder: (context, index) => DarkModeItemWidget(
+                            currentIndex: index,
                             darkModeDataList: changeThemeCubit.darkModeDataList,
                           ),
-                      separatorBuilder: (context, index) => SizedBox(height: 10.h,),
-                      itemCount:  changeThemeCubit.darkModeDataList.length),
+                      separatorBuilder: (context, index) => SizedBox(
+                            height: 10.h,
+                          ),
+                      itemCount: changeThemeCubit.darkModeDataList.length),
                 )
-
-
               ],
             ),
           ),

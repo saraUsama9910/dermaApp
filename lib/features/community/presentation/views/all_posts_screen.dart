@@ -14,31 +14,28 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../core/routes/routes.dart';
 
 class AllPostsScreen extends StatelessWidget {
-   AllPostsScreen({super.key});
+  AllPostsScreen({super.key});
 
   GlobalKey refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GlobalCommunityCubit, GlobalCommunityState>(
-      listener: (context, state) 
-      {
-        if(state is GetAllPostsSuccessState)
-          {
-            showToast(msg: 'All Posts Loaded Successfully', toastStates: ToastStates.success);
-          }
-        if(state is GetAllPostsFailureState)
-        {
+      listener: (context, state) {
+        if (state is GetAllPostsSuccessState) {
+          showToast(
+              msg: 'All Posts Loaded Successfully',
+              toastStates: ToastStates.success);
+        }
+        if (state is GetAllPostsFailureState) {
           showToast(msg: state.errorMessage, toastStates: ToastStates.error);
         }
-        if (state is DeletePostSuccessState)
-          {
-            showToast(msg: state.successMessage, toastStates: ToastStates.success);
-
-          }
-        if (state is DeletePostFailureState)
-          {
-            showToast(msg: state.errorMessage, toastStates: ToastStates.error);
-          }
+        if (state is DeletePostSuccessState) {
+          showToast(
+              msg: state.successMessage, toastStates: ToastStates.success);
+        }
+        if (state is DeletePostFailureState) {
+          showToast(msg: state.errorMessage, toastStates: ToastStates.error);
+        }
       },
       builder: (context, state) {
         final communityCubit = BlocProvider.of<GlobalCommunityCubit>(context);
@@ -47,8 +44,7 @@ class AllPostsScreen extends StatelessWidget {
           body: SafeArea(
             child: RefreshIndicator(
               key: refreshIndicatorKey,
-              onRefresh: ()async
-              {
+              onRefresh: () async {
                 communityCubit.getAllPosts();
               },
               edgeOffset: 1,
@@ -63,8 +59,7 @@ class AllPostsScreen extends StatelessWidget {
                         hasLeading: true,
                         hasActions: true,
                         leading: GestureDetector(
-                          onTap: ()
-                          {
+                          onTap: () {
                             Navigator.pop(context);
                           },
                           child: ResuableText(
@@ -78,7 +73,8 @@ class AllPostsScreen extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               navigate(
-                                  context: context, route: Routes.addPostScreen);
+                                  context: context,
+                                  route: Routes.addPostScreen);
                             },
                             child: Container(
                               width: 30.w,
@@ -103,7 +99,8 @@ class AllPostsScreen extends StatelessWidget {
                             child: GestureDetector(
                               onTap: () {
                                 navigate(
-                                    context: context, route: Routes.searchScreen);
+                                    context: context,
+                                    route: Routes.searchScreen);
                               },
                               child: Container(
                                 width: 30.w,
@@ -133,40 +130,41 @@ class AllPostsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  state is GetAllPostsLoadingState ?
-                  SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                            (context, index) =>
-                        Shimmer.fromColors(
-                          baseColor: AppColors.white,
-                          highlightColor: AppColors.kkPrimaryColor,
-                          child: const PostContainerWidget(
-                            isPostDetailsScreen: false,
+                  state is GetAllPostsLoadingState
+                      ? SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                          (context, index) => Shimmer.fromColors(
+                            baseColor: AppColors.white,
+                            highlightColor: AppColors.kkPrimaryColor,
+                            child: const PostContainerWidget(
+                              isPostDetailsScreen: false,
+                            ),
                           ),
-                        ),
-                        childCount: 20,
-                      )):
-                  state is GetAllPostsSuccessState ?
-                  SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (context, index)
-                        {
-                          final listLength=state.getAllPostsModel.data!.length;
-                          return  PostContainerWidget(
-                            isPostDetailsScreen: false,
-                            getPostData: state.getAllPostsModel.data![listLength-1-index],
-                          );
-                        },
-                        childCount:  state.getAllPostsModel.data!.length,
-                      )) :
-                      state is GetAllPostsFailureState ?
-                  const SliverToBoxAdapter(
-                    child: NoPostsWidget(),
-                  ): SliverFillRemaining(
-                        child: Container(
-                          color: AppColors.cF1F1F0,
-                        ),
-                      ),
+                          childCount: 20,
+                        ))
+                      : state is GetAllPostsSuccessState
+                          ? SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                              (context, index) {
+                                final listLength =
+                                    state.getAllPostsModel.data!.length;
+                                return PostContainerWidget(
+                                  isPostDetailsScreen: false,
+                                  getPostData: state.getAllPostsModel
+                                      .data![listLength - 1 - index],
+                                );
+                              },
+                              childCount: state.getAllPostsModel.data!.length,
+                            ))
+                          : state is GetAllPostsFailureState
+                              ? const SliverToBoxAdapter(
+                                  child: NoPostsWidget(),
+                                )
+                              : SliverFillRemaining(
+                                  child: Container(
+                                    color: AppColors.cF1F1F0,
+                                  ),
+                                ),
                 ],
               ),
             ),

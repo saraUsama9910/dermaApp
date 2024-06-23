@@ -5,22 +5,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:graduation/core/api/api_keys.dart';
-import 'package:graduation/core/cache/cache_helper.dart';
 import 'package:graduation/core/commons/functions.dart';
 import 'package:graduation/core/commons/global_cubits/get_user_info_cubit/get_user_info_cubit.dart';
 import 'package:graduation/core/routes/routes.dart';
 import 'package:graduation/core/utils/app_colors.dart';
 import 'package:graduation/core/utils/app_styles.dart';
 import 'package:graduation/core/utils/image_constants.dart';
-import 'package:graduation/core/widgets/custom_image_picker.dart';
 import 'package:graduation/core/widgets/custom_outlined_text_field.dart';
-import 'package:graduation/core/widgets/default_app_bar.dart';
 import 'package:graduation/core/widgets/resuable_text.dart';
 import 'package:graduation/core/widgets/shared_button.dart';
 import 'package:graduation/features/profile/cubit/update_profile_cubit/update_profile_cubit.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});

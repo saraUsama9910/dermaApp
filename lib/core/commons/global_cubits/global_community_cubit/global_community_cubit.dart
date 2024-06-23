@@ -6,7 +6,6 @@ import 'package:graduation/core/commons/functions.dart';
 import 'package:graduation/features/community/data/models/comments_model/comments_model.dart';
 import 'package:graduation/features/community/data/models/get_all_posts_model/AllPostsModel.dart';
 import 'package:graduation/features/community/data/models/one_post_model/one_post_model.dart';
-import 'package:graduation/features/community/data/models/search_model/search_model.dart';
 import 'package:graduation/features/community/data/repos/community_repo_implementation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
@@ -18,7 +17,6 @@ class GlobalCommunityCubit extends Cubit<GlobalCommunityState> {
       : super(GlobalCommunityInitial());
 
   final CommunityRepoImplementation communityRepoImplementation;
-
 
   //get all posts
   AllPostsModel? getAllPostsModel;
@@ -37,27 +35,17 @@ class GlobalCommunityCubit extends Cubit<GlobalCommunityState> {
     });
   }
 
-
   //add like
   addLikeForPost({required num postId}) async {
     final response =
         await communityRepoImplementation.upvatePost(postId: postId);
-
   }
-
-
 
   //add dislike
   addDislikeForPost({required num postId}) async {
-
     final response =
         await communityRepoImplementation.downvatePost(postId: postId);
-
   }
-
-
-
-
 
   //add comment
   getNumOfComments({required num postsNum}) {
@@ -80,7 +68,8 @@ class GlobalCommunityCubit extends Cubit<GlobalCommunityState> {
     }
   }
 
-  TextEditingController addCommentControllerForAddScreen = TextEditingController();
+  TextEditingController addCommentControllerForAddScreen =
+      TextEditingController();
   TextEditingController addCommentControllerForPostDetailsScreen =
       TextEditingController();
 
@@ -98,20 +87,14 @@ class GlobalCommunityCubit extends Cubit<GlobalCommunityState> {
 
   //delete post
   deletePost({required num postId}) async {
-
     final response =
-    await communityRepoImplementation.deletePost(postId: postId);
-
+        await communityRepoImplementation.deletePost(postId: postId);
   }
-
-
-
 
   // update post
   XFile? updatedPostImage;
 
-  updateNewImageForPost({required XFile image})
-  {
+  updateNewImageForPost({required XFile image}) {
     updatedPostImage = image;
     emit(PhotoUpdatedForPostState());
   }
@@ -121,13 +104,13 @@ class GlobalCommunityCubit extends Cubit<GlobalCommunityState> {
     emit(PhotoDeletedForEditPostState());
   }
 
-  deleteMainUpdatedmage()
-  {
+  deleteMainUpdatedmage() {
     updatedPostImage = null;
     emit(DeletedMainUpdatedPostImage());
   }
 
-  TextEditingController textFieldForUpdatedTextController = TextEditingController();
+  TextEditingController textFieldForUpdatedTextController =
+      TextEditingController();
   updatePost({required num postId, String? postText, XFile? attachment}) async {
     emit(UpdatePostLoadingState());
 
@@ -144,7 +127,6 @@ class GlobalCommunityCubit extends Cubit<GlobalCommunityState> {
     );
   }
 
-
   //update comment
   TextEditingController updateCommentController = TextEditingController();
   TextEditingController updateCommentControllerForPostDetailsScreen =
@@ -152,15 +134,12 @@ class GlobalCommunityCubit extends Cubit<GlobalCommunityState> {
   updateComment({required String newContent, required num commentId}) async {
     final response = await communityRepoImplementation.updateComment(
         newContent: newContent, commentId: commentId);
-
   }
-
 
   //delete comment
   deleteComment({required num commentId}) async {
-
-    final response = await communityRepoImplementation.deleteComment(commentId: commentId);
-
+    final response =
+        await communityRepoImplementation.deleteComment(commentId: commentId);
   }
 
   //get upvotes num
@@ -188,7 +167,6 @@ class GlobalCommunityCubit extends Cubit<GlobalCommunityState> {
       (success) => emit(GetDownvotesNumSuccessState(downvotesNum: success)),
     );
   }
-
 
   //get comments num
   getCommentsNum({required num postId}) async {

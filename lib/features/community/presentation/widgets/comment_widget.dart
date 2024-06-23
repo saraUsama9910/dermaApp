@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:graduation/core/api/api_endPoints.dart';
 import 'package:graduation/core/api/api_keys.dart';
 import 'package:graduation/core/cache/cache_helper.dart';
 import 'package:graduation/core/commons/functions.dart';
@@ -15,7 +13,6 @@ import 'package:graduation/core/utils/image_constants.dart';
 import 'package:graduation/core/widgets/resuable_text.dart';
 import 'package:graduation/features/community/data/models/comments_model/comments_data.dart';
 import 'package:graduation/features/community/presentation/widgets/delete_comment_widget.dart';
-import 'package:graduation/features/community/presentation/widgets/line_widget.dart';
 import 'package:graduation/features/community/presentation/widgets/update_comment_widget.dart';
 
 import '../../../../core/utils/fontweight_helper.dart';
