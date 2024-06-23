@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/core/widgets/resuable_text.dart';
 import 'package:graduation/features/diagnosis/peresntation/widgets/upload_image_button.dart';
-import 'package:graduation/features/home/peresntation/views/widgets/line.dart';
-import 'package:graduation/features/home/peresntation/views/widgets/quick_icons.dart';
 
 import '../../../../core/utils/app_colors.dart';
 
@@ -22,7 +20,7 @@ class UploadImageView extends StatelessWidget {
             color: AppColors.kkPrimaryColor,
           ),
         ),
-        title: ResuableText(
+        title: const ResuableText(
           text: 'Skin Detection',
           color: AppColors.kkPrimaryColor,
           fontWeight: FontWeight.normal,
@@ -33,8 +31,6 @@ class UploadImageView extends StatelessWidget {
       body: const Column(
         children: [
           UploadImageButton(),
-
-
         ],
       ),
     );
